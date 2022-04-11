@@ -33,15 +33,26 @@ const App = () => {
   //   React.createElement(Expenses, { expenses })
   // );
   const [expenses, setExpenses] = useState(INITIAL_EXPENSES);
+  const [isNewExpenseVisible, setIsNewExpenseVisible] = useState();
 
   const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
       return [expense, ...prevExpenses];
     });
   };
+
+  const toggleNewExpenseHandler = () => {
+    setIsNewExpenseVisible((prevValue) => !prevValue);
+  };
+
   return (
     <div>
-      <NewExpense onAddExpense={addExpenseHandler} />
+      <NewExpense
+        isNewExpenseVisible={isNewExpenseVisible}
+        onAddExpense={addExpenseHandler}
+        onToggleNewExpenseHandler={toggleNewExpenseHandler}
+      />
+
       <Expenses expenses={expenses}></Expenses>
     </div>
   );

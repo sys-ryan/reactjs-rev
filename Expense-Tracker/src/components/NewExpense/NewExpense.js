@@ -13,9 +13,25 @@ const NewExpense = (props) => {
 
     props.onAddExpense(expenseData);
   };
+
+  const toggleNewExpenseHandler = () => {
+    props.onToggleNewExpenseHandler();
+  };
+
+  if (!props.isNewExpenseVisible) {
+    return (
+      <div className="new-expense">
+        <button onClick={toggleNewExpenseHandler}>Add New Expense</button>
+      </div>
+    );
+  }
+
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHandler} />
+      <ExpenseForm
+        onSaveExpenseData={saveExpenseDataHandler}
+        onCloseNewExpense={toggleNewExpenseHandler}
+      />
     </div>
   );
 };

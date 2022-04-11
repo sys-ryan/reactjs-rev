@@ -10,14 +10,14 @@ const ExpensesList = (props) => {
   }
 
   return filteredExpenses.map((expense) => (
-    <ul className="expenses-list">
+    <li className="expenses-list" key={expense.id}>
       <ExpenseItem
-        key={expense.id}
+        // key={expense.id}
         title={expense.title}
         amount={expense.amount}
         date={expense.date}
       />
-    </ul>
+    </li>
   ));
 };
 
